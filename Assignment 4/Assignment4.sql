@@ -8,10 +8,10 @@ SELECT RollNo FROM Results WHERE Sub_Code='CS501' AND Marks BETWEEN 61 AND 70;
 UPDATE Student SET Address='New Address' WHERE RollNo='2001';
 
 -- iv. Increase the total number of student allocation of IT to 75
-UPDATE Department SET StudentAlloted=75 WHERE DeptCode='IT';
+UPDATE Department SET StudentsAlloted=75 WHERE DeptCode='IT';
 
 -- v. Increase the total number of student allocation of CSE by 15
-UPDATE Department SET StudentAlloted=StudentAlloted+15 WHERE DeptCode='CSE';
+UPDATE Department SET StudentsAlloted=StudentsAlloted+15 WHERE DeptCode='CSE';
 
 -- vi. Increase the marks of all students of subject CS302 by 5
 UPDATE Results SET Marks=Marks+5 WHERE Sub_Code='CS302';
