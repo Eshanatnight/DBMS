@@ -56,6 +56,7 @@ CREATE TABLE Faculty(
     CONSTRAINT FID_START_WITH_F CHECK(FID LIKE 'F%')
 )
 
+-- Display the Structure of the table
 DESC Faculty;
 
 -- xii. Insert values to the table Faculty.
