@@ -54,7 +54,7 @@ CREATE TABLE Faculty(
     FID VARCHAR2(4),
     Name VARCHAR2(20),
     CONSTRAINT FID_START_WITH_F CHECK(FID LIKE 'F%')
-)
+);
 
 -- Display the Structure of the table
 DESC Faculty;
@@ -72,16 +72,16 @@ INSERT INTO Faculty VALUES('F09','Rakesh Chouhan');
 INSERT INTO Faculty VALUES('F10','Srija Paul');
 
 -- xiii. Insert column pass marks in subject table and add values to this column.
-ALTER TABLE Subject ADD PassMarks NUMBER(3);
+ALTER TABLE Subject ADD PASSMARKS NUMBER(3);
 
 -- Update the pass marks of the subject.
 UPDATE Subject
-    SET PassMarks=40
+    SET PASSMARKS=40
 WHERE SubjectCode in ('CS301', 'CS302', 'CS501', 'CS502', 'CS503', 'EC501');
 
 -- Update rows in a Table
 Update Subject
-    SET PassMarks=30
+    SET PASSMARKS=30
 WHERE SubjectCode = 'EC501';
 
 -- Display the updated table.
