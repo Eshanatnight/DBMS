@@ -3,7 +3,7 @@ CREATE TABLE Subject(
     SubjectCode VARCHAR2(6) PRIMARY KEY,
     SubjectName VARCHAR2(50) NOT NULL,
     DeptCode VARCHAR2(4),
-    Semester VARCHAR2(5) NOT NULL;
+    Semester VARCHAR2(5) NOT NULL,
     FOREIGN KEY(DeptCode) REFERENCES Department(DeptCode)
 );
 

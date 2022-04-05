@@ -3,7 +3,7 @@ CREATE TABLE Department (
     DeptCode varchar(4) Primary Key,
     DeptName varchar(15) not null,
     StudentsAlloted number(4) not null
-    );
+);
 
 -- Display the Structure of the Table
 DESC Department;
