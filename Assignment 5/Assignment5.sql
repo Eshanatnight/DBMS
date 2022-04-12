@@ -50,11 +50,7 @@ ALTER TABLE Subject ADD CONSTRAINT dept_check CHECK(DeptCode IN ('CSE','IT','MCA
 ALTER TABLE Student ADD CollegePhoneNumber NUMBER(10) DEFAULT 25739607;
 
 -- xi. Create a table FACULTY (FID VARCHAR2(4), Name VARCHAR2(20)); Faculty id should start with ‘F’.
-CREATE TABLE Faculty(
-    FID VARCHAR2(4),
-    Name VARCHAR2(20),
-    CONSTRAINT FID_START_WITH_F CHECK(FID LIKE 'F%')
-);
+CREATE TABLE Faculty(FID VARCHAR2(4), Name VARCHAR2(20), CONSTRAINT FID_START_WITH_F CHECK(FID LIKE 'F%'));
 
 -- Display the Structure of the table
 DESC Faculty;
@@ -75,14 +71,10 @@ INSERT INTO Faculty VALUES('F10','Srija Paul');
 ALTER TABLE Subject ADD PASSMARKS NUMBER(3);
 
 -- Update the pass marks of the subject.
-UPDATE Subject
-    SET PASSMARKS=40
-WHERE SubjectCode in ('CS301', 'CS302', 'CS501', 'CS502', 'CS503', 'EC501');
+UPDATE Subject SET PASSMARKS=40 WHERE SubjectCode in ('CS301', 'CS302', 'CS501', 'CS502', 'CS503', 'EC501');
 
 -- Update rows in a Table
-Update Subject
-    SET PASSMARKS=30
-WHERE SubjectCode = 'EC501';
+Update Subject SET PASSMARKS=30WHERE SubjectCode = 'EC501';
 
 -- Display the updated table.
 SELECT * FROM Subject;
