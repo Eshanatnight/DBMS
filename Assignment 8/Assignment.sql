@@ -1,6 +1,6 @@
 -- i. FINd the number of Student IN CSE second year.
-SELECT COUNT(RollNo) AS StudentINSecondYear FROM Student
-WHERE DeptCode = 'CSE' AND Semester IN ('SEM3','SEM4')
+SELECT COUNT(RollNo) AS StudentInSecondYear FROM Student
+WHERE DeptCode = 'CSE' AND Semester IN ('SEM3','SEM4');
 
 -- ii. FINd the number of students whose Marks of any Subject is available.
 SELECT COUNT(DISTINCT RollNo) AS COUNT FROM Results;
@@ -44,9 +44,15 @@ SELECT Name, RollNo FROM Student WHERE RollNo IN
 (SELECT RollNo FROM Results GROUP BY RollNo HAVING AVG(Marks) > 70);
 
 -- xii. Display number of Subject Semester wise IN dept CSE.
-SELECT Semester, NoOfSubjects FROM
-(SELECT Semester, COUNT(SubjectCode) AS NoOfSubjects, DeptCode FROM Subject GROUP BY Semester)
+SELECT Semester, COUNT(SubjectCode) AS NoOfSubject FROM Subject WHERE DeptCode='CSE' GROUP BY Semester;
+
+/*
+I Dont know why this is bugging out? Seems Fine to me?
+SELECT Semester, NoOfSubject FROM
+(SELECT Semester, count(SubjectCode) AS NoOfSubject, DeptCode FROM
+    Subject GROUP BY Semester)
 WHERE DeptCode='CSE';
+*/
 
 -- xiii. FINd the Department Name with MAXimum number of Student.
 SELECT DISTINCT DeptName FROM Department JOIN Student USING (DeptCode)
@@ -61,4 +67,5 @@ WHERE Marks not IN (SELECT MAX(Marks) FROM Results);
 SELECT Name, Marks, Sub_Code FROM Student JOIN Results USING (RollNo)
 WHERE Marks IN (SELECT MAX(Marks) FROM Results GROUP BY Sub_Code);
 
+SELECT Semester, DeptCode, COUNT(SubjectCode) AS NoOfSubjects FROM Subject GROUP BY Semester
 
