@@ -11,14 +11,18 @@ SELECT COUNT(DISTINCT FID) AS NoOfFaculty FROM Faculty;
 -- iv. FINd the 5th Semester Student(s) who got MAXimum Marks IN a Subject.
 SELECT Name FROM Student s JOIN Results r USING(RollNo)
 WHERE Semester='SEM5' AND Marks
-IN (SELECT MAX(Marks) AS Marks FROM Results GROUP BY Sub_Code);
+IN (SELECT MAX(Marks) AS Marks FROM Results
+    GROUP BY Sub_Code);
 
 -- v. FINd the roll number  of a Student who got MAXimum Marks IN CS501.
 SELECT RollNo FROM Results
-WHERE Sub_Code='CS501' AND Marks IN (SELECT MAX(Marks) FROM Results GROUP BY Sub_Code);
+WHERE Sub_Code='CS501' AND Marks
+IN (SELECT MAX(Marks) FROM Results
+    GROUP BY Sub_Code);
 
 -- vi. Display average Marks of CS502.
-SELECT AVG(Marks) FROM Results GROUP BY Sub_Code HAVING Sub_Code='CS502';
+SELECT AVG(Marks) FROM Results
+GROUP BY Sub_Code HAVING Sub_Code='CS502';
 
 -- vii. FINd the number of students IN each Department with their Department code.
 SELECT DeptCode, COUNT(RollNo) AS NoOfStudent
@@ -44,7 +48,9 @@ SELECT Name, RollNo FROM Student WHERE RollNo IN
 (SELECT RollNo FROM Results GROUP BY RollNo HAVING AVG(Marks) > 70);
 
 -- xii. Display number of Subject Semester wise IN dept CSE.
-SELECT Semester, COUNT(SubjectCode) AS NoOfSubject FROM Subject WHERE DeptCode='CSE' GROUP BY Semester;
+SELECT Semester, COUNT(SubjectCode) AS NoOfSubject FROM Subject
+WHERE DeptCode='CSE'
+GROUP BY Semester;
 
 /*
 I Dont know why this is bugging out? Seems Fine to me?
@@ -56,16 +62,18 @@ WHERE DeptCode='CSE';
 
 -- xiii. FINd the Department Name with MAXimum number of Student.
 SELECT DISTINCT DeptName FROM Department JOIN Student USING (DeptCode)
-WHERE DeptCode=(SELECT DeptCode FROM Student GROUP BY DeptCode
-HAVING COUNT(RollNo)=(SELECT MAX(COUNT(RollNo)) FROM Student GROUP BY DeptCode)) ;
+WHERE DeptCode =
+    (SELECT DeptCode FROM Student GROUP BY DeptCode
+    HAVING COUNT(RollNo) =
+        (SELECT MAX(COUNT(RollNo)) FROM Student GROUP BY DeptCode)
+    );
 
 -- xiv. FINd the second highest Marks of the Results table.
 SELECT MAX(Marks) FROM Results
-WHERE Marks not IN (SELECT MAX(Marks) FROM Results);
+WHERE Marks
+NOT IN
+    (SELECT MAX(Marks) FROM Results);
 
 -- xv. FINd the students Name who got highest Marks, subjectwise.
 SELECT Name, Marks, Sub_Code FROM Student JOIN Results USING (RollNo)
 WHERE Marks IN (SELECT MAX(Marks) FROM Results GROUP BY Sub_Code);
-
-SELECT Semester, DeptCode, COUNT(SubjectCode) AS NoOfSubjects FROM Subject GROUP BY Semester
-
