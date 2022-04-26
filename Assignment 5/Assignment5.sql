@@ -10,6 +10,7 @@ SELECT * FROM Subject;
 SELECT * FROM Results;
 
 -- i. Add constraint : DeptCode of Student is foreign key with reference to DeptCode in Department.
+
 ALTER TABLE Student ADD CONSTRAINT fk_deptcode FOREIGN KEY(DeptCode) REFERENCES Department(DeptCode);
 
 -- ii. Add an attribute Block to the department table (data type - Char)
