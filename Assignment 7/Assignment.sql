@@ -31,6 +31,13 @@ SELECT Name, DeptName, SubjectName, marks FROM Student ST JOIN Department D USIN
 -- xi. Add column HOD in Department. Insert faculty id in place of HOD.
 ALTER TABLE Department ADD HOD VARCHAR2(6);
 
+UPDATE SQLITE_MASTER SET SQL = 'CREATE TABLE Department(
+    DeptCode varchar(4) Primary Key,
+    DeptName varchar(50) not null,
+    StudentsAlloted number(4) not null,
+    HOD varchar(6)
+);' WHERE name = 'Department';
+
 UPDATE Department SET HOD='F01' WHERE DeptCode='CSE';
 UPDATE Department SET HOD='F02' WHERE DeptCode='ECE';
 UPDATE Department SET HOD='F03' WHERE DeptCode='IT';
