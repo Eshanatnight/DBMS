@@ -32,5 +32,5 @@ The file should be with the extension '.sql'.
 
 ```sql
     SET SERVEROUTPUT ON;
-    SET SERVEROUTPUT ON FILE /tmp/server_output.log;
+    SET SERVEROUTPUT ON FILE "/path/to/server_output.log";
 ```
